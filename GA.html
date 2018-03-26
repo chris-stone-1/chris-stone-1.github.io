@@ -200,7 +200,7 @@ xmlhttp.onreadystatechange = function () {
 	console.log(halllightname + " - " + halllightstate);
         if(halllightstate == 1) {document.getElementById("halllightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("halllightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
-function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));ga('send', 'event', 'Light', 'Hallway', 'Fall Campaign');}
 
 function HallLightOnOff() {
 xmlhttp = new XMLHttpRequest();
@@ -223,8 +223,8 @@ xmlhttp.onreadystatechange = function () {
 	var halllightname=xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("\"alias\\\":\\\"")+11,xmlhttp.responseText.lastIndexOf("\\\",\\\"dev_name"));
 if (halllightstate == 1) {HallLightOff();
 } else { HallLightOn();}
-function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}}}}
-function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}}
+function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));ga('send', 'event', 'Light', 'Hallway', 'Fall Campaign');}}}}
+function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));ga('send', 'event', 'Light', 'Hallway', 'Fall Campaign');}}
 
 
 
