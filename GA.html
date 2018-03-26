@@ -46,7 +46,7 @@
 <a href="#"> <img id="floorlightimage" class="floorlight" src="#" width="70px" onclick="FloorLightToggle()"> </a>
 <a href="#"> <img id="tvlightimage" class="tvlight" src="#" width="70px" onclick="TVLightToggle()"> </a>
 <a href="#"> <img id="bedlightimage" class="bedlight" src="#" width="70px" onclick="BedLightToggle()"> </a>
-<a href="#"> <img id="halllightimage" class="halllight" src="#" width="70px" onclick="HallLightToggle()" onclick="GAEventTrack('Toggle Light','Hallway Light')"> </a>
+<a href="#"> <img id="halllightimage" class="halllight" src="#" width="70px" onclick="HallLightToggle()"> </a>
 
 
 
@@ -207,8 +207,8 @@ xmlhttp = new XMLHttpRequest();
 var url = "https://eu-wap.tplinkcloud.com/?token=b9d3dd4e-B31nHYxu6iUeTbeFFlZn1lR";
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");}
-function HallLightOn() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":1}}}" }}));hallLight();}
-function HallLightOff() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));hallLight();}
+function HallLightOn() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":1}}}" }}));hallLight();ga('send', 'event', 'Light', 'Hallway', 'Fall Campaign');}
+function HallLightOff() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));hallLight();ga('send', 'event', 'Light', 'Hallway', 'Fall Campaign');}
 
 function HallLightToggle() {
 hallLight();
