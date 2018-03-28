@@ -11,8 +11,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <style>
 .plan {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
 }
 .Floor-Light {
   position: absolute;
@@ -34,6 +34,31 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
   top: 690px;
   left: 775px;
 }
+.All-Light-On {
+  position: absolute;
+  top: 20px;
+  left: 1250px;
+}
+.All-Light-Off {
+  position: absolute;
+  top: 90px;
+  left: 1250px;
+}
+.OnLightText {
+  position: absolute;
+  top: 35px;
+  left: 1290px;
+  font-weight: bold;
+  font-family: Calibri;
+}
+.OffLightText {
+  position: absolute;
+  top: 108px;
+  left: 1290px;
+  font-weight: bold;
+  font-family: Calibri;
+}
+}
 
 </style>
 
@@ -44,11 +69,18 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
-<!--<input id="floorstatus" type="button" value="Status" onclick="floorLight();" />-->
+<!--<input id="floorstatus" type="button" value="Status" onclick="FloorLightOn(),TVLightOn(),BedLightOn(),HallLightOn();" />-->
 <!--<input id="toggle" type="button" value="Toggle" onclick="FloorLightToggle();" />-->
 <!--<input id="flooron" type="button" value="On" onclick="FloorLightOn();" />-->
 <!--<input id="flooroff" type="button" value="Off" onclick="FloorLightOff();" />-->
 
+<!--Side bar-->
+<a href="#"> <img id="alllightonimage" class="All-Light-On" src="https://i.imgur.com/VQXqGfb.png" width="30px" onclick="FloorLightOn(),TVLightOn(),BedLightOn(),HallLightOn();"> </a>
+<a href="#"> <img id="alllightoffimage" class="All-Light-Off" src="https://i.imgur.com/zfEhx5c.png" width="30px" onclick="FloorLightOff(),TVLightOff(),BedLightOff(),HallLightOff();"> </a>
+<span class="OnLightText">All On</span>
+<span class="OffLightText">All Off</span>
+
+<!--Plan-->
 <img id="HomePlan" class="plan" src="https://i.imgur.com/TIm6keH.png"/>
 <a href="#"> <img id="floorlightimage" class="Floor-Light" src="#" width="70px" onclick="FloorLightToggle()"> </a>
 <a href="#"> <img id="tvlightimage" class="TV-Light" src="#" width="70px" onclick="TVLightToggle()"> </a>
