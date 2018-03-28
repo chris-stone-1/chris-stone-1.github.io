@@ -10,7 +10,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 <link rel="stylesheet" type="text/css" href="mystyle.css">
 
-<body onload="floorLight();setInterval(floorLight, 3000),tvLight();setInterval(tvLight, 3000),bedLight();setInterval(bedLight, 3000),hallLight();setInterval(hallLight, 3000)">
+<body onload="floorLight();setInterval(floorLight, 3000)">
 
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TLB2RVD"
@@ -48,6 +48,7 @@ xmlhttp.onreadystatechange = function () {
 	var floorlightstate = JSON.parse(xmlhttp.responseText.charAt(531));
 	var floorlightname=xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("\"alias\\\":\\\"")+11,xmlhttp.responseText.lastIndexOf("\\\",\\\"dev_name"));
 	console.log(floorlightname + " - " + floorlightstate);
+	tvLight();
         if(floorlightstate == 1) {document.getElementById("floorlightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("floorlightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
 function floorLight() {floorlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060DBBE88A3152BACFE50CFD62C39517F97D9E", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
@@ -89,6 +90,7 @@ xmlhttp.onreadystatechange = function () {
 	var tvlightstate = xmlhttp.responseText.charAt(528);
 	var tvlightname=xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("\"alias\\\":\\\"")+11,xmlhttp.responseText.lastIndexOf("\\\",\\\"dev_name"));
 	console.log(tvlightname + " - " + tvlightstate);
+	bedLight();
         if(tvlightstate == 1) {document.getElementById("tvlightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("tvlightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
 function tvLight() {tvlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060C0E5A18C67585586D0CE010A8D817F851F7", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
@@ -131,6 +133,7 @@ xmlhttp.onreadystatechange = function () {
 	var bedlightstate = xmlhttp.responseText.charAt(533);
 	var bedlightname=xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("\"alias\\\":\\\"")+11,xmlhttp.responseText.lastIndexOf("\\\",\\\"dev_name"));
 	console.log(bedlightname + " - " + bedlightstate);
+	hallLight();
         if(bedlightstate == 1) {document.getElementById("bedlightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("bedlightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
 function bedLight() {bedlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006B50CE4ED89F198F4506D9DCFA86A17F9D5CC", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
