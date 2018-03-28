@@ -8,59 +8,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-TLB2RVD');</script>
 <!-- End Google Tag Manager -->
 
-<style>
-.plan {
-  position: relative;
-  top: 0px;
-  left: 0px;
-}
-.Floor-Light {
-  position: absolute;
-  top: 0px;
-  left: 530px;
-}
-.TV-Light {
-  position: absolute;
-  top: 0px;
-  left: 60px;
-}
-.Bedroom-Light {
-  position: absolute;
-  top: 280px;
-  left: 1080px;
-}
-.Hall-Light {
-  position: absolute;
-  top: 690px;
-  left: 775px;
-}
-.All-Light-On {
-  position: absolute;
-  top: 20px;
-  left: 1250px;
-}
-.All-Light-Off {
-  position: absolute;
-  top: 90px;
-  left: 1250px;
-}
-.OnLightText {
-  position: absolute;
-  top: 35px;
-  left: 1290px;
-  font-weight: bold;
-  font-family: Calibri;
-}
-.OffLightText {
-  position: absolute;
-  top: 108px;
-  left: 1290px;
-  font-weight: bold;
-  font-family: Calibri;
-}
-}
-
-</style>
+<link rel="stylesheet" type="text/css" href="mystyle.css">
 
 <body onload="floorLight();setInterval(floorLight, 3000)">
 
@@ -111,7 +59,8 @@ var url = "https://eu-wap.tplinkcloud.com/?token=b9d3dd4e-B31nHYxu6iUeTbeFFlZn1l
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");}
 function FloorLightOn() {FloorLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060DBBE88A3152BACFE50CFD62C39517F97D9E", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":1}}}" }}));floorLight();}
-function FloorLightOff() {FloorLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060DBBE88A3152BACFE50CFD62C39517F97D9E", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));floorLight();}
+function FloorLightOff() {FloorLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060DBBE88A3152BACFE50CFD62C39517F97D9E", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));floorLight();}
+
 
 function FloorLightToggle() {
 floorLight();
@@ -144,7 +93,8 @@ xmlhttp.onreadystatechange = function () {
 	bedLight();
         if(tvlightstate == 1) {document.getElementById("tvlightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("tvlightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
-function tvLight() {tvlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060C0E5A18C67585586D0CE010A8D817F851F7", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+function tvLight() {tvlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060C0E5A18C67585586D0CE010A8D817F851F7", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+
 
 function TVLightOnOff() {
 xmlhttp = new XMLHttpRequest();
@@ -152,7 +102,8 @@ var url = "https://eu-wap.tplinkcloud.com/?token=b9d3dd4e-B31nHYxu6iUeTbeFFlZn1l
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");}
 function TVLightOn() {TVLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060C0E5A18C67585586D0CE010A8D817F851F7", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":1}}}" }}));tvLight();}
-function TVLightOff() {TVLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060C0E5A18C67585586D0CE010A8D817F851F7", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));tvLight();}
+function TVLightOff() {TVLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "80060C0E5A18C67585586D0CE010A8D817F851F7", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));tvLight();}
+
 
 function TVLightToggle() {
 tvLight();
@@ -185,7 +136,8 @@ xmlhttp.onreadystatechange = function () {
 	hallLight();
         if(bedlightstate == 1) {document.getElementById("bedlightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("bedlightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
-function bedLight() {bedlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006B50CE4ED89F198F4506D9DCFA86A17F9D5CC", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+function bedLight() {bedlightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006B50CE4ED89F198F4506D9DCFA86A17F9D5CC", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+
 
 function BedLightOnOff() {
 xmlhttp = new XMLHttpRequest();
@@ -193,7 +145,8 @@ var url = "https://eu-wap.tplinkcloud.com/?token=b9d3dd4e-B31nHYxu6iUeTbeFFlZn1l
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");}
 function BedLightOn() {BedLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006B50CE4ED89F198F4506D9DCFA86A17F9D5CC", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":1}}}" }}));bedLight();}
-function BedLightOff() {BedLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006B50CE4ED89F198F4506D9DCFA86A17F9D5CC", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));bedLight();}
+function BedLightOff() {BedLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006B50CE4ED89F198F4506D9DCFA86A17F9D5CC", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));bedLight();}
+
 
 function BedLightToggle() {
 bedLight();
@@ -225,7 +178,8 @@ xmlhttp.onreadystatechange = function () {
 	console.log(halllightname + " - " + halllightstate);
         if(halllightstate == 1) {document.getElementById("halllightimage").src = "https://i.imgur.com/VQXqGfb.png";
 	} else {document.getElementById("halllightimage").src = "https://i.imgur.com/zfEhx5c.png";}}}}
-function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+function hallLight() {halllightStatus(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"get_sysinfo\":null},\"emeter\":{\"get_realtime\":null}}" }}));}
+
 
 function HallLightOnOff() {
 xmlhttp = new XMLHttpRequest();
@@ -233,7 +187,8 @@ var url = "https://eu-wap.tplinkcloud.com/?token=b9d3dd4e-B31nHYxu6iUeTbeFFlZn1l
 xmlhttp.open("POST", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");}
 function HallLightOn() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":1}}}" }}));hallLight();}
-function HallLightOff() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));hallLight();}
+function HallLightOff() {HallLightOnOff(); xmlhttp.send(JSON.stringify({"method":"passthrough", "params": {"deviceId": "8006AC69D79A7CC13AF8AB59BADB794617F98793", "requestData": "{\"system\":{\"set_relay_state\":{\"state\":0}}}" }}));hallLight();}
+
 
 function HallLightToggle() {
 hallLight();

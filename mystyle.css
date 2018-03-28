@@ -1,0 +1,50 @@
+
+.plan {
+  position: relative;
+  top: 0px;
+  left: 0px;
+}
+.Floor-Light {
+  position: absolute;
+  top: 0px;
+  left: 530px;
+}
+.TV-Light {
+  position: absolute;
+  top: 0px;
+  left: 60px;
+}
+.Bedroom-Light {
+  position: absolute;
+  top: 280px;
+  left: 1080px;
+}
+.Hall-Light {
+  position: absolute;
+  top: 690px;
+  left: 775px;
+}
+.All-Light-On {
+  position: absolute;
+  top: 20px;
+  left: 1250px;
+}
+.All-Light-Off {
+  position: absolute;
+  top: 90px;
+  left: 1250px;
+}
+.OnLightText {
+  position: absolute;
+  top: 35px;
+  left: 1290px;
+  font-weight: bold;
+  font-family: Calibri;
+}
+.OffLightText {
+  position: absolute;
+  top: 108px;
+  left: 1290px;
+  font-weight: bold;
+  font-family: Calibri;
+}
