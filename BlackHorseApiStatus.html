@@ -92,7 +92,23 @@ xmlhttp.onreadystatechange = function () {
 	document.getElementById("lastcheck3").innerHTML = lastcheck3;
 	document.getElementById("lastcheck4").innerHTML = lastcheck4;
 
+  if (error1 == "DOWN") {
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", "https://maker.ifttt.com/trigger/uptrends/with/key/cBW8X7ZxoSFbUBsByJ8gwy?value1=GFV is down");
+  xmlhttp.send();
+  }
 
+  if (error2 == "DOWN") {
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", "https://maker.ifttt.com/trigger/uptrends/with/key/cBW8X7ZxoSFbUBsByJ8gwy?value1=Post Customer is down");
+  xmlhttp.send();
+  }
+
+  if (error2 == "DOWN") {
+  xmlhttp = new XMLHttpRequest();
+  xmlhttp.open("POST", "https://maker.ifttt.com/trigger/uptrends/with/key/cBW8X7ZxoSFbUBsByJ8gwy?value1=Settlement is down");
+  xmlhttp.send();
+  }
 
 
     }
@@ -121,7 +137,9 @@ xmlhttp2.onreadystatechange = function () {
 	xmlhttp2.send(JSON.stringify(parameters));
     setTimeout(function () {
 	upCall();
-    }, 10000);
+    }, 60000);
+
+
 
 }
 
