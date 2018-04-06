@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+table.apitable  {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 350px;
+    position: absolute;
+    top: 70px;
+    left: 0px;
+}
+
+table.lextable  {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 350px;
+    position: absolute;
+    top: 70px;
+    left: 400px;
+}
+
+table.bhtable  {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 350px;
+    position: absolute;
+    top: 70px;
+    left: 800px;
+}
+
+td, th {
+    border: 0px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+.APIText {
+  position: absolute;
+  top: 10px;
+  left: 130px;
+  font-weight: bold;
+  font-size: 45px;
+  font-family: Calibri;
+}
+
+.LexText {
+  position: absolute;
+  top: 10px;
+  left: 445px;
+  font-weight: bold;
+  font-size: 45px;
+  font-family: Calibri;
+}
+
+.BHText {
+  position: absolute;
+  top: 10px;
+  left: 860px;
+  font-weight: bold;
+  font-size: 45px;
+  font-family: Calibri;
+}
+
+</style>
+</head>
+
+<span class="APIText">APIs</span>
+<table class=apitable>
+  <tr></td><td id="apierror1"><img id="apierrorimage1" src="#" height=40 width=40></img></td><td id="apiname1"></tr>
+  <tr></td><td id="apierror2"><img id="apierrorimage2" src="#" height=40 width=40></img></td><td id="apiname2"></tr>
+  <tr></td><td id="apierror3"><img id="apierrorimage3" src="#" height=40 width=40></img></td><td id="apiname3"></tr>
+  <tr></td><td id="apierror4"><img id="apierrorimage4" src="#" height=40 width=40></img></td><td id="apiname4"></tr>
+</table>
+
+<span class="LexText">Lex Autolease</span>
+<table class=lextable>
+  <tr></td><td id="lexerror1"><img id="lexerrorimage1" src="#" height=40 width=40></img></td><td id="lexname1"></tr>
+  <tr></td><td id="lexerror2"><img id="lexerrorimage2" src="#" height=40 width=40></img></td><td id="lexname2"></tr>
+  <tr></td><td id="lexerror3"><img id="lexerrorimage3" src="#" height=40 width=40></img></td><td id="lexname3"></tr>
+  <tr></td><td id="lexerror4"><img id="lexerrorimage4" src="#" height=40 width=40></img></td><td id="lexname4"></tr>
+  <tr></td><td id="lexerror5"><img id="lexerrorimage5" src="#" height=40 width=40></img></td><td id="lexname5"></tr>
+  <tr></td><td id="lexerror6"><img id="lexerrorimage6" src="#" height=40 width=40></img></td><td id="lexname6"></tr>
+</table>
+
+<span class="BHText">Black Horse</span>
+<table class=bhtable>
+  <tr></td><td id="bherror1"><img id="bherrorimage1" src="#" height=40 width=40></img></td><td id="bhname1"></tr>
+  <tr></td><td id="bherror2"><img id="bherrorimage2" src="#" height=40 width=40></img></td><td id="bhname2"></tr>
+  <tr></td><td id="bherror3"><img id="bherrorimage3" src="#" height=40 width=40></img></td><td id="bhname3"></tr>
+  <tr></td><td id="bherror4"><img id="bherrorimage4" src="#" height=40 width=40></img></td><td id="bhname4"></tr>
+  <tr></td><td id="bherror5"><img id="bherrorimage5" src="#" height=40 width=40></img></td><td id="bhname5"></tr>
+  <tr></td><td id="bherror6"><img id="bherrorimage6" src="#" height=40 width=40></img></td><td id="bhname6"></tr>
+</table>
+
+
+<body onload="apiCall()">
+
+<script>
+
+function apiCall() {
+
+xmlhttp = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/fa617a3b-f6c2-47cf-9081-74fa77d8ef47/status?format=json";
+xmlhttp.open("GET", url, true);
+xmlhttp.setRequestHeader("Content-type", "application/json");
+xmlhttp.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+	var apiuptime = JSON.parse(xmlhttp.responseText);
+	console.log(xmlhttp.responseText);
+
+	var apierror1 = apiuptime[0].ErrorLevel;
+	var apierror2 = apiuptime[1].ErrorLevel;
+	var apierror3 = apiuptime[2].ErrorLevel;
+	var apierror4 = apiuptime[3].ErrorLevel;
+
+	if (apierror1 == "NoError") {document.getElementById("apierrorimage1").innerHTML = document.getElementById("apierrorimage1").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (apierror1 == "InActive") {document.getElementById("apierrorimage1").innerHTML = document.getElementById("apierrorimage1").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("apierrorimage1").innerHTML = document.getElementById("apierrorimage1").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} }	
+
+  if (apierror2 == "NoError") {document.getElementById("apierrorimage2").innerHTML = document.getElementById("apierrorimage2").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (apierror2 == "InActive") {document.getElementById("apierrorimage2").innerHTML = document.getElementById("apierrorimage2").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("apierrorimage2").innerHTML = document.getElementById("apierrorimage2").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (apierror3 == "NoError") {document.getElementById("apierrorimage3").innerHTML = document.getElementById("apierrorimage3").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (apierror3 == "InActive") {document.getElementById("apierrorimage3").innerHTML = document.getElementById("apierrorimage3").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("apierrorimage3").innerHTML = document.getElementById("apierrorimage3").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} }   
+
+  if (apierror4 == "NoError") {document.getElementById("apierrorimage4").innerHTML = document.getElementById("apierrorimage4").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (apierror4 == "InActive") {document.getElementById("apierrorimage4").innerHTML = document.getElementById("apierrorimage4").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("apierrorimage4").innerHTML = document.getElementById("apierrorimage4").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} }   
+
+ 
+    }
+}
+xmlhttp.send();
+
+
+xmlhttp2 = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/fa617a3b-f6c2-47cf-9081-74fa77d8ef47/members?format=json";
+xmlhttp2.open("GET", url, true);
+xmlhttp2.setRequestHeader("Content-type", "application/json");
+xmlhttp2.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+
+	var apiuptime = JSON.parse(xmlhttp2.responseText);
+	console.log(xmlhttp2.responseText);
+
+	document.getElementById("apiname1").innerHTML = apiuptime[0].Name;
+	document.getElementById("apiname2").innerHTML = apiuptime[1].Name;
+	document.getElementById("apiname3").innerHTML = apiuptime[2].Name;
+	document.getElementById("apiname4").innerHTML = apiuptime[3].Name;
+    }
+}
+	xmlhttp2.send();
+    setTimeout(function () {
+	lexCall();
+    }, 1000);
+
+}
+
+
+
+
+
+function lexCall() {
+
+xmlhttp = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/65e87841-d3f8-43eb-9a04-fe29123ec5c4/status?format=json";
+xmlhttp.open("GET", url, true);
+xmlhttp.setRequestHeader("Content-type", "application/json");
+xmlhttp.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+  var lexuptime = JSON.parse(xmlhttp.responseText);
+  console.log(xmlhttp.responseText);
+
+  var lexerror1 = lexuptime[0].ErrorLevel;
+  var lexerror2 = lexuptime[1].ErrorLevel;
+  var lexerror3 = lexuptime[2].ErrorLevel;
+  var lexerror4 = lexuptime[3].ErrorLevel;
+  var lexerror5 = lexuptime[4].ErrorLevel;
+  var lexerror6 = lexuptime[5].ErrorLevel;
+
+  if (lexerror1 == "NoError") {document.getElementById("lexerrorimage1").innerHTML = document.getElementById("lexerrorimage1").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (lexerror1 == "InActive") {document.getElementById("lexerrorimage1").innerHTML = document.getElementById("lexerrorimage1").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("lexerrorimage1").innerHTML = document.getElementById("lexerrorimage1").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (lexerror2 == "NoError") {document.getElementById("lexerrorimage2").innerHTML = document.getElementById("lexerrorimage2").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (lexerror2 == "InActive") {document.getElementById("lexerrorimage2").innerHTML = document.getElementById("lexerrorimage2").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("lexerrorimage2").innerHTML = document.getElementById("lexerrorimage2").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (lexerror3 == "NoError") {document.getElementById("lexerrorimage3").innerHTML = document.getElementById("lexerrorimage3").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (lexerror3 == "InActive") {document.getElementById("lexerrorimage3").innerHTML = document.getElementById("lexerrorimage3").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("lexerrorimage3").innerHTML = document.getElementById("lexerrorimage3").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (lexerror4 == "NoError") {document.getElementById("lexerrorimage4").innerHTML = document.getElementById("lexerrorimage4").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (lexerror4 == "InActive") {document.getElementById("lexerrorimage4").innerHTML = document.getElementById("lexerrorimage4").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("lexerrorimage4").innerHTML = document.getElementById("lexerrorimage4").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (lexerror5 == "NoError") {document.getElementById("lexerrorimage5").innerHTML = document.getElementById("lexerrorimage5").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (lexerror5 == "InActive") {document.getElementById("lexerrorimage5").innerHTML = document.getElementById("lexerrorimage5").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("lexerrorimage5").innerHTML = document.getElementById("lexerrorimage5").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (lexerror6 == "NoError") {document.getElementById("lexerrorimage6").innerHTML = document.getElementById("lexerrorimage6").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (lexerror6 == "InActive") {document.getElementById("lexerrorimage6").innerHTML = document.getElementById("lexerrorimage6").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("lexerrorimage6").innerHTML = document.getElementById("lexerrorimage6").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} }           
+
+    }
+}
+xmlhttp.send();
+
+
+xmlhttp2 = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/65e87841-d3f8-43eb-9a04-fe29123ec5c4/members?format=json";
+xmlhttp2.open("GET", url, true);
+xmlhttp2.setRequestHeader("Content-type", "application/json");
+xmlhttp2.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+
+  var lexuptime = JSON.parse(xmlhttp2.responseText);
+  console.log(xmlhttp2.responseText);
+
+  document.getElementById("lexname1").innerHTML = lexuptime[0].Name;
+  document.getElementById("lexname2").innerHTML = lexuptime[1].Name;
+  document.getElementById("lexname3").innerHTML = lexuptime[2].Name;
+  document.getElementById("lexname4").innerHTML = lexuptime[3].Name;
+  document.getElementById("lexname5").innerHTML = lexuptime[4].Name;
+  document.getElementById("lexname6").innerHTML = lexuptime[5].Name;
+
+    }
+}
+  xmlhttp2.send();
+    setTimeout(function () {
+  bhCall();
+    }, 1000);
+}
+
+
+
+
+function bhCall() {
+
+xmlhttp = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/status?format=json";
+xmlhttp.open("GET", url, true);
+xmlhttp.setRequestHeader("Content-type", "application/json");
+xmlhttp.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+  var bhuptime = JSON.parse(xmlhttp.responseText);
+  console.log(xmlhttp.responseText);
+
+  var bherror1 = bhuptime[0].ErrorLevel;
+  var bherror2 = bhuptime[1].ErrorLevel;
+  var bherror3 = bhuptime[2].ErrorLevel;
+  var bherror4 = bhuptime[3].ErrorLevel;
+  var bherror5 = bhuptime[4].ErrorLevel;
+  var bherror6 = bhuptime[5].ErrorLevel;
+
+  if (bherror1 == "NoError") {document.getElementById("bherrorimage1").innerHTML = document.getElementById("bherrorimage1").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (bherror1 == "InActive") {document.getElementById("bherrorimage1").innerHTML = document.getElementById("bherrorimage1").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("bherrorimage1").innerHTML = document.getElementById("bherrorimage1").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (bherror2 == "NoError") {document.getElementById("bherrorimage2").innerHTML = document.getElementById("bherrorimage2").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (bherror2 == "InActive") {document.getElementById("bherrorimage2").innerHTML = document.getElementById("bherrorimage2").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("bherrorimage2").innerHTML = document.getElementById("bherrorimage2").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (bherror3 == "NoError") {document.getElementById("bherrorimage3").innerHTML = document.getElementById("bherrorimage3").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (bherror3 == "InActive") {document.getElementById("bherrorimage3").innerHTML = document.getElementById("bherrorimage3").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("bherrorimage3").innerHTML = document.getElementById("bherrorimage3").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (bherror4 == "NoError") {document.getElementById("bherrorimage4").innerHTML = document.getElementById("bherrorimage4").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (bherror4 == "InActive") {document.getElementById("bherrorimage4").innerHTML = document.getElementById("bherrorimage4").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("bherrorimage4").innerHTML = document.getElementById("bherrorimage4").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (bherror5 == "NoError") {document.getElementById("bherrorimage5").innerHTML = document.getElementById("bherrorimage5").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (bherror5 == "InActive") {document.getElementById("bherrorimage5").innerHTML = document.getElementById("bherrorimage5").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("bherrorimage5").innerHTML = document.getElementById("bherrorimage5").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} } 
+
+  if (bherror6 == "NoError") {document.getElementById("bherrorimage6").innerHTML = document.getElementById("bherrorimage6").src = "https://cdn1.iconfinder.com/data/icons/warnings-and-dangers/400/Warning-02-512.png";} else { if (bherror6 == "InActive") {document.getElementById("bherrorimage6").innerHTML = document.getElementById("bherrorimage6").src = "http://www.downloadclipart.net/large/20230-inner-grey-design.png";} else {document.getElementById("bherrorimage6").innerHTML = document.getElementById("bherrorimage6").src = "https://cdn3.iconfinder.com/data/icons/picons-weather/57/53_warning-512.png";} }           
+
+    }
+}
+xmlhttp.send();
+
+
+xmlhttp2 = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/members?format=json";
+xmlhttp2.open("GET", url, true);
+xmlhttp2.setRequestHeader("Content-type", "application/json");
+xmlhttp2.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+
+  var bhuptime = JSON.parse(xmlhttp2.responseText);
+  console.log(xmlhttp2.responseText);
+
+  document.getElementById("bhname1").innerHTML = bhuptime[0].Name;
+  document.getElementById("bhname2").innerHTML = bhuptime[1].Name;
+  document.getElementById("bhname3").innerHTML = bhuptime[2].Name;
+  document.getElementById("bhname4").innerHTML = bhuptime[3].Name;
+  document.getElementById("bhname5").innerHTML = bhuptime[4].Name;
+  document.getElementById("bhname6").innerHTML = bhuptime[5].Name;
+
+    }
+}
+  xmlhttp2.send();
+    setTimeout(function () {
+  apiCall();
+    }, 60000);
+}
+
+
+</script>
+
+
+</html>
