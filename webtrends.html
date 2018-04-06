@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body onload="apiCall()">
+
+<script>
+
+function apiCall() {
+
+xmlhttp = new XMLHttpRequest();
+var url = "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json";
+xmlhttp.open("GET", url, true);
+xmlhttp.setRequestHeader("Content-type", "application/json");
+xmlhttp.setRequestHeader("Authorization", "Basic bGJncm91cC9jaHJpcy5zdG9uZTpHZW9yZ2UzN0BA"); 
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+	var apiuptime = JSON.parse(xmlhttp.responseText);
+	console.log(xmlhttp.responseText);
+
+ 
+    }
+}
+xmlhttp.send();
+}
+
+
+</script>
+
+
+</html>
