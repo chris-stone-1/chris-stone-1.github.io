@@ -11,7 +11,7 @@ $.ajax({
         withCredentials: true
     },
     beforeSend: function (xhr) {
-        xhr.setRequestHeader('Authorization', 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA');
+        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('lbgroup%5Cchris.stone:George37@@@'));
     },
     url: "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json"
 });
@@ -22,7 +22,7 @@ $.ajax({
         withCredentials: true
     },
     headers: {
-        'Authorization': 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA'
+        'Authorization': 'Basic ' + btoa('lbgroup%5Cchris.stone:George37@@@')
     },
     url: "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json"
 });
@@ -31,7 +31,7 @@ $.ajax({
 var xhr = new XMLHttpRequest();
 xhr.open("GET", "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json", true);
 xhr.withCredentials = true;
-xhr.setRequestHeader("Authorization", 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA');
+xhr.setRequestHeader("Authorization", 'Basic ' + btoa('lbgroup%5Cchris.stone:George37@@@'));
 xhr.onload = function () {
     console.log(xhr.responseText);
 };
@@ -39,7 +39,7 @@ xhr.send();
 
 // using Fetch API
 var myHeaders = new Headers();
-myHeaders.append("Authorization", 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA');
+myHeaders.append("Authorization", 'Basic ' + btoa('lbgroup%5Cchris.stone:George37@@@'));
 fetch("https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json", {
     credentials: "include",
     headers: myHeaders

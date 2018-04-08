@@ -12,10 +12,10 @@
 function apiCall() {
 
 xmlhttp = new XMLHttpRequest();
-var url = "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json";
+var url = "https://lbgroup%5Cchris.stone:George37@@@ws.webtrends.com/v3/Reporting/profiles/104882/reports/iWAcKzOh5N7/?totals=only&period_type=agg&format=json&suppress_error_codes=true";
 xmlhttp.open("GET", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");
-xmlhttp.setRequestHeader("Authorization", "Basic bGJncm91cC9jaHJpcy5zdG9uZTpHZW9yZ2UzN0BA"); 
+//xmlhttp.setRequestHeader("Authorization", "lbgroup%5Cchris.stone:George37@@@"); 
 xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
