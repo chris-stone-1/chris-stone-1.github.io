@@ -3,29 +3,43 @@
 
 <head>
 
+<span class="APIText">Today</span>
+<table class=apitable>
+  <tr><td>Visits: </td><td id="visits">-</td></tr>
+  <tr><td>Page Views: </td><td id="pageviews">-</td></tr>
+</table>
+
 </head>
 
-<body onload="apiCall()">
+<body onload="WTCall()">
 
 <script>
 
-function apiCall() {
+function WTCall() {
 
 xmlhttp = new XMLHttpRequest();
-var url = "https://lbgroup%5Cchris.stone:George37@@@ws.webtrends.com/v3/Reporting/profiles/104882/reports/iWAcKzOh5N7/?totals=only&period_type=agg&format=json&suppress_error_codes=true";
+var url = "https://bnnq37uk24.execute-api.eu-west-1.amazonaws.com/Prod/custvisits-today";
 xmlhttp.open("GET", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");
-//xmlhttp.setRequestHeader("Authorization", "lbgroup%5Cchris.stone:George37@@@"); 
 xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
-	var apiuptime = JSON.parse(xmlhttp.responseText);
+
 	console.log(xmlhttp.responseText);
+	var visits=xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("Sessions")+10,xmlhttp.responseText.lastIndexOf("Screen Views")-2);
+	var pageviews=xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("Screen Views")+14,xmlhttp.responseText.lastIndexOf("SubRows")-3);
+	document.getElementById("visits").innerHTML = visits;
+	document.getElementById("pageviews").innerHTML = pageviews;
 
  
     }
 }
 xmlhttp.send();
+    setTimeout(function () {
+	WTCall();
+    }, 60000);
+
+
 }
 
 
