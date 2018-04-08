@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+
+// using jQuery & 'beforeSend' callback
+$.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader('Authorization', 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA');
+    },
+    url: "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json"
+});
+
+// using jQuery & 'headers' property
+$.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    headers: {
+        'Authorization': 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA'
+    },
+    url: "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json"
+});
+
+// using XMLHttpRequest
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json", true);
+xhr.withCredentials = true;
+xhr.setRequestHeader("Authorization", 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA');
+xhr.onload = function () {
+    console.log(xhr.responseText);
+};
+xhr.send();
+
+// using Fetch API
+var myHeaders = new Headers();
+myHeaders.append("Authorization", 'Basic bGJncm91cFxjaHJpcy5zdG9uZTpHZW9yZ2UzN0BA');
+fetch("https://ws.webtrends.com/v3/Reporting/profiles/100964/reports/VSlaqtDP0P6/?totals=all&start_period=2018m3&end_period=2018m3&period_type=agg&format=json", {
+    credentials: "include",
+    headers: myHeaders
+}).then(function (response) {
+    return response.json();
+}).then(function (json) {
+    console.log(json);
+});
+</script>
+
+
+
+
+</head>
+<body>
+
+
+</body>
+</html>

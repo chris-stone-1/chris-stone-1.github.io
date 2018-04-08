@@ -3,18 +3,59 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(document).ready(function(){
-    $("button").click(function(){
-        $.get("https://www.w3schools.com/jquery/demo_test.asp", function(data, status){
-            alert("Data: " + data + "\nStatus: " + status);
-        });
-    });
+
+
+// using jQuery & 'beforeSend' callback
+$.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    beforeSend: function (xhr) {
+        xhr.setRequestHeader('Authorization', 'Basic ' + btoa('christopher.stone@lbgassetfinance.co.uk:chris15awesome'));
+    },
+    url: "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/members?format=json"
+});
+
+// using jQuery & 'headers' property
+$.ajax({
+    xhrFields: {
+        withCredentials: true
+    },
+    headers: {
+        'Authorization': 'Basic ' + btoa('christopher.stone@lbgassetfinance.co.uk:chris15awesome')
+    },
+    url: "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/members?format=json"
+});
+
+// using XMLHttpRequest
+var xhr = new XMLHttpRequest();
+xhr.open("GET", "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/members?format=json", true);
+xhr.withCredentials = true;
+xhr.setRequestHeader("Authorization", 'Basic ' + btoa('christopher.stone@lbgassetfinance.co.uk:chris15awesome'));
+xhr.onload = function () {
+    console.log(xhr.responseText);
+};
+xhr.send();
+
+// using Fetch API
+var myHeaders = new Headers();
+myHeaders.append("Authorization", 'Basic ' + btoa('christopher.stone@lbgassetfinance.co.uk:chris15awesome'));
+fetch("https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/members?format=json", {
+    credentials: "include",
+    headers: myHeaders
+}).then(function (response) {
+    return response.json();
+}).then(function (json) {
+    console.log(json);
 });
 </script>
+
+
+
+
 </head>
 <body>
 
-<button>Send an HTTP GET request to a page and get the result back</button>
 
 </body>
 </html>
