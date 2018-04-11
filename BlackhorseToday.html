@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 
@@ -7,7 +8,7 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-<div id="container" style="min-width: 310px; height: 500px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 700px; margin: 0 auto"></div>
 
 
 
@@ -22,80 +23,136 @@
 function WTCall() {
 
 xmlhttp = new XMLHttpRequest();
-var url = "https://bnnq37uk24.execute-api.eu-west-1.amazonaws.com/Prod/cpvisits-today";
+var url = "https://bnnq37uk24.execute-api.eu-west-1.amazonaws.com/Prod/custvisits-today";
 xmlhttp.open("GET", url, true);
 xmlhttp.setRequestHeader("Content-type", "application/json");
 xmlhttp.onreadystatechange = function () {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 
 
-	var visits="<th>Domain</th><th>Time</th><th>Sessions</th></tr>"+xmlhttp.responseText.substring(xmlhttp.responseText.lastIndexOf("&nbsp;</td></tr><tr><td>www.b")+16,xmlhttp.responseText.lastIndexOf("www.blackhorse.co.uk")+65);
-    var data = +visits.substring(visits.split("00</td><td>", 1).join("00</td><td>").length+11,visits.split("00</td><td>", 2).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 2).join("00</td><td>").length+11,visits.split("00</td><td>", 3).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 3).join("00</td><td>").length+11,visits.split("00</td><td>", 4).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 4).join("00</td><td>").length+11,visits.split("00</td><td>", 5).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 5).join("00</td><td>").length+11,visits.split("00</td><td>", 6).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 6).join("00</td><td>").length+11,visits.split("00</td><td>", 7).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 7).join("00</td><td>").length+11,visits.split("00</td><td>", 8).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 8).join("00</td><td>").length+11,visits.split("00</td><td>", 9).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 9).join("00</td><td>").length+11,visits.split("00</td><td>", 10).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 10).join("00</td><td>").length+11,visits.split("00</td><td>", 11).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 11).join("00</td><td>").length+11,visits.split("00</td><td>", 12).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 12).join("00</td><td>").length+11,visits.split("00</td><td>", 13).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 13).join("00</td><td>").length+11,visits.split("00</td><td>", 14).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 14).join("00</td><td>").length+11,visits.split("00</td><td>", 15).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 15).join("00</td><td>").length+11,visits.split("00</td><td>", 16).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 16).join("00</td><td>").length+11,visits.split("00</td><td>", 17).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 17).join("00</td><td>").length+11,visits.split("00</td><td>", 18).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 18).join("00</td><td>").length+11,visits.split("00</td><td>", 19).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 19).join("00</td><td>").length+11,visits.split("00</td><td>", 20).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 20).join("00</td><td>").length+11,visits.split("00</td><td>", 21).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 21).join("00</td><td>").length+11,visits.split("00</td><td>", 22).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 22).join("00</td><td>").length+11,visits.split("00</td><td>", 23).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 23).join("00</td><td>").length+11,visits.split("00</td><td>", 24).join("00</td><td>").length-61)+","
-        +visits.substring(visits.split("00</td><td>", 24).join("00</td><td>").length+11,visits.split("</td></tr>", 25).join("</td></tr>").length-10);
+    var visits =xmlhttp.responseText;
 
-    var total = +visits.substring(visits.split("00</td><td>", 1).join("00</td><td>").length+11,visits.split("00</td><td>", 2).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 2).join("00</td><td>").length+11,visits.split("00</td><td>", 3).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 3).join("00</td><td>").length+11,visits.split("00</td><td>", 4).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 4).join("00</td><td>").length+11,visits.split("00</td><td>", 5).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 5).join("00</td><td>").length+11,visits.split("00</td><td>", 6).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 6).join("00</td><td>").length+11,visits.split("00</td><td>", 7).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 7).join("00</td><td>").length+11,visits.split("00</td><td>", 8).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 8).join("00</td><td>").length+11,visits.split("00</td><td>", 9).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 9).join("00</td><td>").length+11,visits.split("00</td><td>", 10).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 10).join("00</td><td>").length+11,visits.split("00</td><td>", 11).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 11).join("00</td><td>").length+11,visits.split("00</td><td>", 12).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 12).join("00</td><td>").length+11,visits.split("00</td><td>", 13).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 13).join("00</td><td>").length+11,visits.split("00</td><td>", 14).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 14).join("00</td><td>").length+11,visits.split("00</td><td>", 15).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 15).join("00</td><td>").length+11,visits.split("00</td><td>", 16).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 16).join("00</td><td>").length+11,visits.split("00</td><td>", 17).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 17).join("00</td><td>").length+11,visits.split("00</td><td>", 18).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 18).join("00</td><td>").length+11,visits.split("00</td><td>", 19).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 19).join("00</td><td>").length+11,visits.split("00</td><td>", 20).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 20).join("00</td><td>").length+11,visits.split("00</td><td>", 21).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 21).join("00</td><td>").length+11,visits.split("00</td><td>", 22).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 22).join("00</td><td>").length+11,visits.split("00</td><td>", 23).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 23).join("00</td><td>").length+11,visits.split("00</td><td>", 24).join("00</td><td>").length-61)+
-        +visits.substring(visits.split("00</td><td>", 24).join("00</td><td>").length+11,visits.split("</td></tr>", 25).join("</td></tr>").length-10);
-    var categories = "'12am','1am','2am','3am','4am','5am','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm','10pm','11pm'"
+    var url = "www.blackhorse.co.uk";
+    var chars = url.length+34;
+    var todaydata = visits.substring(visits.split(url, 2).join(url).length+chars).substr(0, visits.substring(visits.split(url, 2).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 3).join(url).length+chars).substr(0, visits.substring(visits.split(url, 3).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 4).join(url).length+chars).substr(0, visits.substring(visits.split(url, 4).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 5).join(url).length+chars).substr(0, visits.substring(visits.split(url, 5).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 6).join(url).length+chars).substr(0, visits.substring(visits.split(url, 6).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 7).join(url).length+chars).substr(0, visits.substring(visits.split(url, 7).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 8).join(url).length+chars).substr(0, visits.substring(visits.split(url, 8).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 9).join(url).length+chars).substr(0, visits.substring(visits.split(url, 9).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 10).join(url).length+chars).substr(0, visits.substring(visits.split(url, 10).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 11).join(url).length+chars).substr(0, visits.substring(visits.split(url, 11).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 12).join(url).length+chars).substr(0, visits.substring(visits.split(url, 12).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 13).join(url).length+chars).substr(0, visits.substring(visits.split(url, 13).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 14).join(url).length+chars).substr(0, visits.substring(visits.split(url, 14).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 15).join(url).length+chars).substr(0, visits.substring(visits.split(url, 15).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 16).join(url).length+chars).substr(0, visits.substring(visits.split(url, 16).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 17).join(url).length+chars).substr(0, visits.substring(visits.split(url, 17).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 18).join(url).length+chars).substr(0, visits.substring(visits.split(url, 18).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 19).join(url).length+chars).substr(0, visits.substring(visits.split(url, 19).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 20).join(url).length+chars).substr(0, visits.substring(visits.split(url, 20).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 21).join(url).length+chars).substr(0, visits.substring(visits.split(url, 21).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 22).join(url).length+chars).substr(0, visits.substring(visits.split(url, 22).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 23).join(url).length+chars).substr(0, visits.substring(visits.split(url, 23).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 24).join(url).length+chars).substr(0, visits.substring(visits.split(url, 24).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 25).join(url).length+chars).substr(0, visits.substring(visits.split(url, 25).join(url).length+chars).indexOf('</td>'));
 
-	//console.log(visits);	
-    console.log(data);
-    console.log(categories);
-    console.log(total);  
+    var todaytotal = +visits.substring(visits.split(url, 2).join(url).length+chars).substr(0, visits.substring(visits.split(url, 2).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 3).join(url).length+chars).substr(0, visits.substring(visits.split(url, 3).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 4).join(url).length+chars).substr(0, visits.substring(visits.split(url, 4).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 5).join(url).length+chars).substr(0, visits.substring(visits.split(url, 5).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 6).join(url).length+chars).substr(0, visits.substring(visits.split(url, 6).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 7).join(url).length+chars).substr(0, visits.substring(visits.split(url, 7).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 8).join(url).length+chars).substr(0, visits.substring(visits.split(url, 8).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 9).join(url).length+chars).substr(0, visits.substring(visits.split(url, 9).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 10).join(url).length+chars).substr(0, visits.substring(visits.split(url, 10).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 11).join(url).length+chars).substr(0, visits.substring(visits.split(url, 11).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 12).join(url).length+chars).substr(0, visits.substring(visits.split(url, 12).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 13).join(url).length+chars).substr(0, visits.substring(visits.split(url, 13).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 14).join(url).length+chars).substr(0, visits.substring(visits.split(url, 14).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 15).join(url).length+chars).substr(0, visits.substring(visits.split(url, 15).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 16).join(url).length+chars).substr(0, visits.substring(visits.split(url, 16).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 17).join(url).length+chars).substr(0, visits.substring(visits.split(url, 17).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 18).join(url).length+chars).substr(0, visits.substring(visits.split(url, 18).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 19).join(url).length+chars).substr(0, visits.substring(visits.split(url, 19).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 20).join(url).length+chars).substr(0, visits.substring(visits.split(url, 20).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 21).join(url).length+chars).substr(0, visits.substring(visits.split(url, 21).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 22).join(url).length+chars).substr(0, visits.substring(visits.split(url, 22).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 23).join(url).length+chars).substr(0, visits.substring(visits.split(url, 23).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 24).join(url).length+chars).substr(0, visits.substring(visits.split(url, 24).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 25).join(url).length+chars).substr(0, visits.substring(visits.split(url, 25).join(url).length+chars).indexOf('</td>'));
 
-	//document.getElementById("datatable").innerHTML = visits;
+
+    var url = "www.blackhorse.co.uk";
+    var chars = url.length+34;
+    var yesterdaydata = visits.substring(visits.split(url, 26).join(url).length+chars).substr(0, visits.substring(visits.split(url, 26).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 27).join(url).length+chars).substr(0, visits.substring(visits.split(url, 27).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 28).join(url).length+chars).substr(0, visits.substring(visits.split(url, 28).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 29).join(url).length+chars).substr(0, visits.substring(visits.split(url, 29).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 30).join(url).length+chars).substr(0, visits.substring(visits.split(url, 30).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 31).join(url).length+chars).substr(0, visits.substring(visits.split(url, 31).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 32).join(url).length+chars).substr(0, visits.substring(visits.split(url, 32).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 33).join(url).length+chars).substr(0, visits.substring(visits.split(url, 33).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 34).join(url).length+chars).substr(0, visits.substring(visits.split(url, 34).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 35).join(url).length+chars).substr(0, visits.substring(visits.split(url, 35).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 36).join(url).length+chars).substr(0, visits.substring(visits.split(url, 36).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 37).join(url).length+chars).substr(0, visits.substring(visits.split(url, 37).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 38).join(url).length+chars).substr(0, visits.substring(visits.split(url, 38).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 39).join(url).length+chars).substr(0, visits.substring(visits.split(url, 39).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 40).join(url).length+chars).substr(0, visits.substring(visits.split(url, 40).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 41).join(url).length+chars).substr(0, visits.substring(visits.split(url, 41).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 42).join(url).length+chars).substr(0, visits.substring(visits.split(url, 42).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 43).join(url).length+chars).substr(0, visits.substring(visits.split(url, 43).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 44).join(url).length+chars).substr(0, visits.substring(visits.split(url, 44).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 45).join(url).length+chars).substr(0, visits.substring(visits.split(url, 45).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 46).join(url).length+chars).substr(0, visits.substring(visits.split(url, 46).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 47).join(url).length+chars).substr(0, visits.substring(visits.split(url, 47).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 48).join(url).length+chars).substr(0, visits.substring(visits.split(url, 48).join(url).length+chars).indexOf('</td>'))+","+
+                visits.substring(visits.split(url, 49).join(url).length+chars).substr(0, visits.substring(visits.split(url, 49).join(url).length+chars).indexOf('</td>'));
+
+    var yesterdaytotal = +visits.substring(visits.split(url, 26).join(url).length+chars).substr(0, visits.substring(visits.split(url, 26).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 27).join(url).length+chars).substr(0, visits.substring(visits.split(url, 27).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 28).join(url).length+chars).substr(0, visits.substring(visits.split(url, 28).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 29).join(url).length+chars).substr(0, visits.substring(visits.split(url, 29).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 30).join(url).length+chars).substr(0, visits.substring(visits.split(url, 30).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 31).join(url).length+chars).substr(0, visits.substring(visits.split(url, 31).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 32).join(url).length+chars).substr(0, visits.substring(visits.split(url, 32).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 33).join(url).length+chars).substr(0, visits.substring(visits.split(url, 33).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 34).join(url).length+chars).substr(0, visits.substring(visits.split(url, 34).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 35).join(url).length+chars).substr(0, visits.substring(visits.split(url, 35).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 36).join(url).length+chars).substr(0, visits.substring(visits.split(url, 36).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 37).join(url).length+chars).substr(0, visits.substring(visits.split(url, 37).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 38).join(url).length+chars).substr(0, visits.substring(visits.split(url, 38).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 39).join(url).length+chars).substr(0, visits.substring(visits.split(url, 39).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 40).join(url).length+chars).substr(0, visits.substring(visits.split(url, 40).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 41).join(url).length+chars).substr(0, visits.substring(visits.split(url, 41).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 42).join(url).length+chars).substr(0, visits.substring(visits.split(url, 42).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 43).join(url).length+chars).substr(0, visits.substring(visits.split(url, 43).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 44).join(url).length+chars).substr(0, visits.substring(visits.split(url, 44).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 45).join(url).length+chars).substr(0, visits.substring(visits.split(url, 45).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 46).join(url).length+chars).substr(0, visits.substring(visits.split(url, 46).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 47).join(url).length+chars).substr(0, visits.substring(visits.split(url, 47).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 48).join(url).length+chars).substr(0, visits.substring(visits.split(url, 48).join(url).length+chars).indexOf('</td>'))+
+                +visits.substring(visits.split(url, 49).join(url).length+chars).substr(0, visits.substring(visits.split(url, 49).join(url).length+chars).indexOf('</td>'));
+
+
+    console.log(visits);  
+    console.log("todaydata - "+todaydata);
+    console.log("yesterdaydata - "+yesterdaydata);
+ 
+
+    //document.getElementById("datatable").innerHTML = visits;
 
 
 
 Highcharts.chart('container', {
     chart: {
-        type: 'area'
+        type: 'column'
     },
     title: {
-        text: 'Visits Today',
+        text: 'Visits to Blackhorse.co.uk',
         style: {
             fontWeight: 'bold',
             fontSize: '28px'
@@ -103,68 +160,6 @@ Highcharts.chart('container', {
     },
     subtitle: {
         //text: 'Source: WorldClimate.com'
-    },
-    xAxis: {
-        categories: [
-        '12am',
-        '1am',
-        '2am',
-        '3am',
-        '4am',
-        '5am',
-        '6am',
-        '7am',
-        '8am',
-        '9am',
-        '10am',
-        '11am',
-        '12pm',
-        '1pm',
-        '2pm',
-        '3pm',
-        '4pm',
-        '5pm',
-        '6pm',
-        '7pm',
-        '8pm',
-        '9pm',
-        '10pm',
-        '11pm'
-        ],
-        crosshair: true,
-                labels: {
-            style: {
-                fontSize: '15px'
-            }
-        }
-    },
-    yAxis: {
-        min: 0,
-        title: {
-            text: 'Visits',
-            style: {
-                fontWeight: 'bold',
-                fontSize: '20px'
-            }
-        },
-                labels: {
-            style: {
-                fontSize: '15px'
-            }
-        }
-    },
-    tooltip: {
-        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
-            '<td style="padding:0"><b>{point.y:.1f}</b></td></tr>',
-        footerFormat: '</table>',
-        shared: true,
-        useHTML: true
-    },
-    plotOptions: {
-        series: {
-            animation: false
-        }
     },
             legend: {
           borderRadius:0,
@@ -191,13 +186,61 @@ Highcharts.chart('container', {
         }
 
         },
+    xAxis: {
+        categories: ['12am','1am','2am','3am','4am','5am','6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm','9pm','10pm','11pm'],
+
+        crosshair: true,
+                labels: {
+            style: {
+                fontSize: '16px'
+            }
+        }
+    },
+    yAxis: {
+        min: 0,
+        title: {
+            text: 'Visits',
+            style: {
+                fontWeight: 'bold',
+                fontSize: '20px'
+            }
+        },
+                labels: {
+            style: {
+                fontSize: '15px'
+            }
+        }
+    },
+    tooltip: {
+        headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+        pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+            '<td style="padding:0"><b>{point.y:,.0f}</b></td></tr>',
+        footerFormat: '</table>',
+        shared: true,
+        useHTML: true
+    },
+    plotOptions: {
+        series: {
+            animation: false
+        }
+    },
 
 
-    series: [{
-        name: 'blackhorse.co.uk',
-        total: JSON.parse("[" + total + "]"),
-        data: JSON.parse("[" + data + "]"),  //this is the data formatted into an array which highcharts accepts, mimic again for another series
-    }]
+
+    series: [
+    {
+        name: 'Today',
+        total: JSON.parse("[" + todaytotal.toLocaleString() + "]"), //toLocaleString adds a comma for 1000s
+        data: JSON.parse("[" + todaydata + "]"),
+    },
+    {
+        name: 'Yesterday',
+        total: JSON.parse("[" + yesterdaytotal.toLocaleString() + "]"),
+        data: JSON.parse("[" + yesterdaydata + "]"),
+        color: '#af6767'
+    }
+    ]
+
 });
 
  
@@ -207,8 +250,8 @@ Highcharts.chart('container', {
 
 xmlhttp.send();
     setTimeout(function () {
-	WTCall();
-    }, 60000);
+    WTCall();
+    }, 300000);
 }
 
 
