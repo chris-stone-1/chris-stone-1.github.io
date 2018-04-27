@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+</style>
+</head>
+
+<span>Black Horse</span>
+<table>
+  <tr><th>Status</td><td>Name</td><td>Guid</td><td>Last Check</td><td>Check Again</td><td>Disable</td><td>Enable</td><td>Monitor URL</td></tr>
+  <tr><td id="error1"><img id="errorimage1" src="#" height=40 width=40></img></td><td id="name1"></td><td id="guid1"></td><td id="lastcheck1"></td><td id="checkagain1"></td><td><button type="button" onclick="disable(1)">Click Me!</button></td><td id="enable1"></td><td id="url1"></td></tr>
+  <tr><td id="error2"><img id="errorimage2" src="#" height=40 width=40></img></td><td id="name2"></td><td id="guid2"></td><td id="lastcheck2"></td><td id="checkagain2"></td><td id="disable2"><button type="button" onclick="disable(2)">Click Me!</button></td><td id="enable2"></td><td id="url2"></td></tr>
+  <tr><td id="error3"><img id="errorimage3" src="#" height=40 width=40></img></td><td id="name3"></td><td id="guid3"></td><td id="lastcheck3"></td><td id="checkagain3"></td><td id="disable3"></td><td id="enable3"></td><td id="url3"></td></tr>
+  <tr><td id="error4"><img id="errorimage4" src="#" height=40 width=40></img></td><td id="name4"></td><td id="guid4"></td><td id="lastcheck4"></td><td id="checkagain4"></td><td id="disable4"></td><td id="enable4"></td><td id="url4"></td></tr>
+  <tr><td id="error5"><img id="errorimage5" src="#" height=40 width=40></img></td><td id="name5"></td><td id="guid5"></td><td id="lastcheck5"></td><td id="checkagain5"></td><td id="disable5"></td><td id="enable5"></td><td id="url5"></td></tr>
+  <tr><td id="error6"><img id="errorimage6" src="#" height=40 width=40></img></td><td id="name6"></td><td id="guid6"></td><td id="lastcheck6"></td><td id="checkagain6"></td><td id="disable6"></td><td id="enable6"></td><td id="url6"></td></tr>
+</table>
+
+
+<body onload="dataCall()">
+
+<script>
+
+function dataCall() {
+
+xmlhttp = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/status?format=json";
+xmlhttp.open("GET", url, true);
+xmlhttp.setRequestHeader("Content-type", "application/json");
+xmlhttp.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp.onreadystatechange = function () {
+    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+
+  var uptime = JSON.parse(xmlhttp.responseText);
+  //console.log(xmlhttp.responseText);
+
+  var error1 = uptime[0].ErrorLevel;
+  var error2 = uptime[1].ErrorLevel;
+  var error3 = uptime[2].ErrorLevel;
+  var error4 = uptime[3].ErrorLevel;
+  var error5 = uptime[4].ErrorLevel;
+  var error6 = uptime[5].ErrorLevel;
+
+  document.getElementById("guid1").innerHTML = uptime[0].ProbeGuid;
+  document.getElementById("guid2").innerHTML = uptime[1].ProbeGuid;
+  document.getElementById("guid3").innerHTML = uptime[2].ProbeGuid;
+  document.getElementById("guid4").innerHTML = uptime[3].ProbeGuid;
+  document.getElementById("guid5").innerHTML = uptime[4].ProbeGuid;
+  document.getElementById("guid6").innerHTML = uptime[5].ProbeGuid;
+
+  document.getElementById("lastcheck1").innerHTML = uptime[0].LastCheck.split('T').pop();
+  document.getElementById("lastcheck2").innerHTML = uptime[1].LastCheck.split('T').pop();
+  document.getElementById("lastcheck3").innerHTML = uptime[2].LastCheck.split('T').pop();
+  document.getElementById("lastcheck4").innerHTML = uptime[3].LastCheck.split('T').pop();
+  document.getElementById("lastcheck5").innerHTML = uptime[4].LastCheck.split('T').pop();
+  document.getElementById("lastcheck6").innerHTML = uptime[5].LastCheck.split('T').pop();
+
+  document.getElementById("url1").innerHTML = "<a href=\"https://app.uptrends.com/Report/Probe?probeGuid="+uptime[1].ProbeGuid+"\">URL</a>";
+  document.getElementById("url2").innerHTML = "<a href=\"https://app.uptrends.com/Report/Probe?probeGuid="+uptime[2].ProbeGuid+"\">URL</a>";
+  document.getElementById("url3").innerHTML = "<a href=\"https://app.uptrends.com/Report/Probe?probeGuid="+uptime[3].ProbeGuid+"\">URL</a>";
+  document.getElementById("url4").innerHTML = "<a href=\"https://app.uptrends.com/Report/Probe?probeGuid="+uptime[4].ProbeGuid+"\">URL</a>";
+  document.getElementById("url5").innerHTML = "<a href=\"https://app.uptrends.com/Report/Probe?probeGuid="+uptime[5].ProbeGuid+"\">URL</a>";
+  document.getElementById("url6").innerHTML = "<a href=\"https://app.uptrends.com/Report/Probe?probeGuid="+uptime[6].ProbeGuid+"\">URL</a>";
+
+  var error = error1; var image="errorimage1";
+  if (error == "NoError") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycaj42mu";} else { if (error == "InActive") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/y8c7z8ug";} else {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycacurhn";} } 
+
+  var error = error2; var image="errorimage2";
+  if (error == "NoError") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycaj42mu";} else { if (error == "InActive") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/y8c7z8ug";} else {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycacurhn";} } 
+
+  var error = error3; var image="errorimage3";
+  if (error == "NoError") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycaj42mu";} else { if (error == "InActive") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/y8c7z8ug";} else {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycacurhn";} } 
+
+  var error = error4; var image="errorimage4";
+  if (error == "NoError") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycaj42mu";} else { if (error == "InActive") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/y8c7z8ug";} else {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycacurhn";} } 
+
+  var error = error5; var image="errorimage5";
+  if (error == "NoError") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycaj42mu";} else { if (error == "InActive") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/y8c7z8ug";} else {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycacurhn";} } 
+
+  var error = error6; var image="errorimage6";
+  if (error == "NoError") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycaj42mu";} else { if (error == "InActive") {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/y8c7z8ug";} else {document.getElementById(image).innerHTML = document.getElementById(image).src = "https://tinyurl.com/ycacurhn";} }          
+
+    }
+}
+xmlhttp.send();
+
+
+xmlhttp2 = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups/3a4898d0-cc61-49b8-b146-50428edaf010/members?format=json";
+xmlhttp2.open("GET", url, true);
+xmlhttp2.setRequestHeader("Content-type", "application/json");
+xmlhttp2.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+
+  var uptime = JSON.parse(xmlhttp2.responseText);
+  //console.log(xmlhttp2.responseText);
+
+  document.getElementById("name1").innerHTML = uptime[0].Name;
+  document.getElementById("name2").innerHTML = uptime[1].Name;
+  document.getElementById("name3").innerHTML = uptime[2].Name;
+  document.getElementById("name4").innerHTML = uptime[3].Name;
+  document.getElementById("name5").innerHTML = uptime[4].Name;
+  document.getElementById("name6").innerHTML = uptime[5].Name;
+
+    }
+}
+  xmlhttp2.send();
+    setTimeout(function () {
+  dataCall();
+    }, 60000);
+}
+
+
+function disable(x){
+console.log(x)
+
+var guid = "guid"+x;
+console.log(document.getElementById(guid).innerHTML)
+
+xmlhttp2 = new XMLHttpRequest();
+var url = "https://api.uptrends.com/v3/probegroups"//+document.getElementById(guid).innerHTML;
+xmlhttp2.open("PUT", url, true);
+xmlhttp2.setRequestHeader("Content-type", "application/json");
+xmlhttp2.setRequestHeader("Authorization", "Basic Y2hyaXN0b3BoZXIuc3RvbmVAbGJnYXNzZXRmaW5hbmNlLmNvLnVrOmNocmlzMTVhd2Vzb21l"); 
+xmlhttp2.onreadystatechange = function () {
+    if (xmlhttp2.readyState == 4 && xmlhttp2.status == 200) {
+
+  var uptime = JSON.parse(xmlhttp2.responseText);
+  console.log(xmlhttp2.responseText);
+
+    }
+}
+  xmlhttp2.send(parameters);
+  console.log("sent");
+
+
+}
+
+var parameters = {
+  "Name" : "My new Group"
+}
+
+
+
+</script>
+
+
+</html>
