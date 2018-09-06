@@ -7,8 +7,8 @@ window.utag_data = {
             "State":"Unauth",
             "System":"",
             "TrustDataLayer": true,
-            "TrackEvents": false,
-            "TrackHashChanges": false,
+            "TrackEvents": true,
+            "TrackHashChanges": true,
             "@context": {
                 "version": "1.0",
                 "owner": "Lloyds Banking Group - Group Web Analytics"
