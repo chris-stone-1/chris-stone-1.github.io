@@ -410,6 +410,7 @@ var PHC =
                break;
 
             case "answer":
+                utag.view({});
                 url = "http://statse.webtrendslive.com/dcs222rd2gkg8p2vli1bl94ba_5p2b/dcs.gif?dcsredirect=126&dcstlh=0&dcstlv=0&dcsuri=/touch-screen/questions&dcssip=www.scottishwidows-pensionbus.co.uk&WT.es=www.scottishwidows-pensionbus.co.uk/touch-screen/questions&DCSext.qa.question={{question}}&WT.si_x={{scenariono}}&DCSext.qa.answer={{answer}}&WT.si_n=pension_personality&brand=ScottishWidows&division=Retail&WT.ti=Pension Bus - Questions";
                 break;
 
