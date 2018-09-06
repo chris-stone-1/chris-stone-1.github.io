@@ -402,21 +402,20 @@ var PHC =
         switch( what)
         {
             case "load":
-                url = "http://statse.webtrendslive.com/dcs222rd2gkg8p2vli1bl94ba_5p2b/dcs.gif?dcsredirect=126&dcstlh=0&dcstlv=0&dcsuri=/touch-screen/splash&dcssip=www.scottishwidows-pensionbus.co.uk&WT.es=www.scottishwidows-pensionbus.co.uk/touch-screen/splash&WT.tx_e=v&WT.si_n=pension_personality&brand=ScottishWidows&division=Retail&WT.ti=Pension Bus - Splash Screen&WT.si_x=1";
+            utag.view({});
                 break;
     
             case "start":
-               url = "http://statse.webtrendslive.com/dcs222rd2gkg8p2vli1bl94ba_5p2b/dcs.gif?dcsredirect=126&dcstlh=0&dcstlv=0&dcsuri=/touch-screen/start-funnel&dcssip=www.scottishwidows-pensionbus.co.uk&WT.es=www.scottishwidows-pensionbus.co.uk/touch-screen/start-funnel&WT.si_n=pension_personality&brand=ScottishWidows&division=Retail&WT.ti=Pension Bus - Start Button&WT.si_x=2"            
-               break;
+            utag.view({});
+            break;
 
             case "answer":
-                utag.view({});
-                url = "http://statse.webtrendslive.com/dcs222rd2gkg8p2vli1bl94ba_5p2b/dcs.gif?dcsredirect=126&dcstlh=0&dcstlv=0&dcsuri=/touch-screen/questions&dcssip=www.scottishwidows-pensionbus.co.uk&WT.es=www.scottishwidows-pensionbus.co.uk/touch-screen/questions&DCSext.qa.question={{question}}&WT.si_x={{scenariono}}&DCSext.qa.answer={{answer}}&WT.si_n=pension_personality&brand=ScottishWidows&division=Retail&WT.ti=Pension Bus - Questions";
+            utag.view({});
                 break;
 
             case "result":
-                url = "http://statse.webtrendslive.com/dcs222rd2gkg8p2vli1bl94ba_5p2b/dcs.gif?dcsredirect=126&dcstlh=0&dcstlv=0&dcsuri=/touch-screen/results&dcssip=www.scottishwidows-pensionbus.co.uk&WT.es=www.scottishwidows-pensionbus.co.uk/touch-screen/results&WT.tx_e=s&WT.si_n=pension_personality&brand=ScottishWidows&division=Retail&WT.ti=Pension Bus - Results&WT.tx_s={{result}}&WT.si_x=8"
-                break;
+            utag.view({});
+            break;
         }
 
         if ( url != "" )
